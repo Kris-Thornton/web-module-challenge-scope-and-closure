@@ -30,11 +30,21 @@ console.log('example task:', processFirstItem(['foo','bar'],function(str){return
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
+
+  // In counter1, there is a local variable within the function scope. 
+
+  // in counter2 the count variable is global which can accessed from the inner function.
   
   2. Which of the two uses a closure? How can you tell?
+
+//  counter1 used a closure because of the inner function that returns a value.
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+
+    //  for counter1, I think is best for block scope situation like if statements and for loops.
+
+    // for counter2, This would be best used perhaps in a game where many different functions can point to that variable to store points. however I do not believe this is the best practice, as programs get larger it can lead to bugs in the code.
 */
 
 // counter1 code
@@ -53,7 +63,7 @@ let count = 0;
 function counter2() {
   return count++;
 }
-
+console.log(`Task 1 Questions`)
 
 /* ⚾️⚾️⚾️ Task 2: inning() ⚾️⚾️⚾️
 Use the inning function below to do the following:
@@ -64,10 +74,11 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
-}
+function inning(){
 
+    return Math.floor(Math.random() * 3);
+}
+console.log(`Task 2`, inning())
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
 Use the finalScore function below to do the following:
@@ -83,9 +94,21 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*Code Here*/){
-  /*Code Here*/
-}
+function finalScore(inning, numOfInnings){
+    
+   let home = 0
+   let away = 0
+
+   for(let i = 0; i < numOfInnings; i++){
+    home += inning()
+    away += inning()
+   }
+   return {'Home': home, 'Away': away};
+    
+    }   
+  
+  
+  console.log(`Task 3`, finalScore(inning, 9))
 
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
@@ -101,11 +124,19 @@ For example: invoking getInningScore(inning) might return this object:
   */
 
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(inning) {
+let home = 0
+let away = 0
 
+  for(let i = 0; i < inning; i++){
+    home += inning()
+    away += inning()
+  }
+  return {'Home': home, 'Away': away};
 }
+  
 
+console.log(`Task 4`, getInningScore())
 
 /* STRETCH: ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
